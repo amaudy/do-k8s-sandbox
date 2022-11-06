@@ -18,3 +18,12 @@ resource "digitalocean_kubernetes_cluster" "sandboxk8s" {
     }
   }
 }
+
+output "endpoint" {
+  value = digitalocean_kubernetes_cluster.sandboxk8s.id
+}
+
+output "cluster_ca_certificate" {
+  sensitive = true
+  value = digitalocean_kubernetes_cluster.sandboxk8s.kube_config[0].raw_config
+}
