@@ -10,12 +10,6 @@ resource "digitalocean_kubernetes_cluster" "sandboxk8s" {
     size = "s-2vcpu-2gb"
     # size       = "s-2vcpu-4gb-amd"
     node_count = 3
-
-    taint {
-      key    = "workloadKind"
-      value  = "database"
-      effect = "NoSchedule"
-    }
   }
 }
 
@@ -25,5 +19,5 @@ output "endpoint" {
 
 output "raw_config" {
   sensitive = true
-  value = digitalocean_kubernetes_cluster.sandboxk8s.kube_config[0].raw_config
+  value     = digitalocean_kubernetes_cluster.sandboxk8s.kube_config[0].raw_config
 }
