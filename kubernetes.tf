@@ -23,7 +23,11 @@ output "endpoint" {
   value = digitalocean_kubernetes_cluster.sandboxk8s.id
 }
 
-output "cluster_ca_certificate" {
+output "raw_config" {
   sensitive = true
   value = digitalocean_kubernetes_cluster.sandboxk8s.kube_config[0].raw_config
+}
+
+output "host" {
+  value = digitalocean_kubernetes_cluster.sandboxk8s.kube_config[0].host
 }
